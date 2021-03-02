@@ -1,9 +1,11 @@
-import './App.css';
+import React from 'react';
+import Routes from './routes';
+import './GlobalStyles.css';
 
 function App() {
   return (
     <div className="App">
-      <p>Olá mundo!</p>
+      <Routes />
     </div>
   );
 }
