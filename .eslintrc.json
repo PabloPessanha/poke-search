@@ -18,15 +18,6 @@
       "semi": ["error", "always"],
       "class-methods-use-this": ["off"],
       "complexity": ["off", 11],
-      "no-magic-numbers": [
-        "error",
-        {
-          "ignore": [0, 1, 2, 100],
-          "ignoreArrayIndexes": true,
-          "enforceConst": true,
-          "detectObjects": false
-        }
-      ],
       "react/button-has-type": [
         "error",
         {

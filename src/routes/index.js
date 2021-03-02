@@ -5,8 +5,8 @@ import { Details, Home } from '../pages';
 const Routes = () => (
   <Router>
     <Switch>
-      <Route exact path="/" component={Home} />
-      <Route path="/:id" component={Details} />
+      <Route exact path="/" component={ Home } />
+      <Route path="/:id" component={ Details } />
     </Switch>
   </Router>
 );
