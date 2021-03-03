@@ -9,7 +9,7 @@ const Home = () => {
   return (
     <div className="pokemons">
       { data.map((pokemon, index) => (
-        <PokemonCard key={ pokemon } data={ pokemon } pokeNum={ index + 1 } />
+        <PokemonCard key={ pokemon.name } data={ pokemon } pokeNum={ index + 1 } />
       )) }
     </div>
   );

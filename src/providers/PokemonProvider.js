@@ -11,7 +11,7 @@ export default function PokemonProvider({ children }) {
   useEffect(() => {
     const getData = async () => setData(await fetch1stGenPokemons());
     getData();
-    setIsLoading(!isLoading);
+    setIsLoading(false);
   }, []);
 
   const objectValue = {
