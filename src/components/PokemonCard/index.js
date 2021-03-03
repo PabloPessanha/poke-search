@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 
 const PokemonCard = ({ data: { name, image, types }, pokeNum }) => {
   let pokemonNumber = `00${pokeNum}`;
-  if (pokeNum > 10 && pokeNum < 100) pokemonNumber = `0${pokeNum}`;
-  if (pokeNum >= 100) pokemonNumber = pokeNum;
+  const changePokeNum = useCallback(() => {
+    if (pokeNum > 10 && pokeNum < 100) pokemonNumber = `0${pokeNum}`;
+    if (pokeNum >= 100) pokemonNumber = pokeNum;
+  }, [pokeNum]);
+  changePokeNum();
 
   return (
     <div className="pokemon-card">
@@ -19,7 +22,7 @@ const PokemonCard = ({ data: { name, image, types }, pokeNum }) => {
             {' '}
           </span>
         ))}
-        <h4>{pokemonNumber}</h4>
+        <h4>{`No.${pokemonNumber}`}</h4>
       </div>
     </div>
   );
