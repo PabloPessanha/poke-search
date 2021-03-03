@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Loading } from '../../components';
+import { Loading, PokemonDetail } from '../../components';
 import { fetchPokemon } from '../../services/pokemonApi';
 
 const Details = () => {
@@ -17,13 +17,7 @@ const Details = () => {
   }, []);
 
   if (isLoading) return <Loading />;
-  return (
-    <div>
-      <img src={ pokemon.sprites.front_default } alt="pokemon-thumb" />
-      <h1>{pokemon.name}</h1>
-      <h2>{`Peso: ${pokemon.weight} KG`}</h2>
-    </div>
-  );
+  return <PokemonDetail pokemon={ pokemon } />;
 };
 
 export default Details;
