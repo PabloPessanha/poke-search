@@ -1,13 +1,16 @@
-import React from 'react';
-import { fetch1stGenPokemons } from '../../services/pokemonApi';
+import React, { useContext } from 'react';
+import { PokemonCard, Loading } from '../../components';
+import { pokemonContext } from '../../providers/PokemonProvider';
 
 const Home = () => {
-  const response = async () => console.log(await fetch1stGenPokemons());
-  response();
+  const { data, isLoading } = useContext(pokemonContext);
 
+  if (isLoading) return <Loading />;
   return (
-    <div>
-      Página Home
+    <div className="pokemons">
+      { data.map((pokemon, index) => (
+        <PokemonCard key={ pokemon } data={ pokemon } pokeNum={ index + 1 } />
+      )) }
     </div>
   );
 };
