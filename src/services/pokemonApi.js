@@ -14,13 +14,12 @@ export async function fetch1stGenPokemons() {
   try {
     const endpoint = await fetch('https://pokeapi.co/api/v2/pokemon?limit=151');
     const { results } = await endpoint.json();
-    const allPreviewInfos = await Promise.all(results.map(async (pokemon, index) => {
-      const infos = await fetchPreviewInfos(index + 1);
-      return {
-        ...pokemon,
-        ...infos,
-      };
-    }));
+    const allPreviewInfos = await Promise.all(
+      results.map(async ({ name }, index) => {
+        const infos = await fetchPreviewInfos(index + 1);
+        return { name, ...infos };
+      }),
+    );
     return allPreviewInfos;
   } catch (error) {
     return error;
