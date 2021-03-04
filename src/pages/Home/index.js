@@ -4,16 +4,15 @@ import { pokemonContext } from '../../providers/PokemonProvider';
 
 const Home = () => {
   const [filters, setFilters] = useState([]);
-  const [dataFiltered, setDataFiltered] = useState([]);
-  const { data, isLoading, allTypes, setAllTypes } = useContext(pokemonContext);
+  const {
+    data,
+    dataFiltered,
+    setDataFiltered, isLoading, allTypes, setAllTypes } = useContext(pokemonContext);
 
   useEffect(() => {
-    setDataFiltered(data);
-  }, [data]);
-
-  useEffect(() => {
-    setDataFiltered(dataFiltered
+    setDataFiltered(data
       .filter(({ types }) => filters.every((type) => types.includes(type))));
+    setAllTypes(allTypes.filter((type) => !(filters.includes(type))));
   }, [filters]);
 
   function filterByType({ target: { className } }) {
@@ -21,7 +20,10 @@ const Home = () => {
       if (currValue.includes(className)) return currValue;
       return [...currValue, className];
     });
-    setAllTypes(allTypes.filter((type) => !(filters.includes(type))));
+  }
+
+  function removeFilter({ target: { className } }) {
+    return setFilters((currValue) => currValue.filter((type) => type !== className));
   }
 
   if (isLoading) return <Loading />;
@@ -38,6 +40,19 @@ const Home = () => {
             {type}
           </button>
         ))}
+        <br />
+        <div className="remove-buttons">
+          {filters.map((type) => (
+            <button
+              type="button"
+              key={ `remove-${type}` }
+              className={ type }
+              onClick={ removeFilter }
+            >
+              {type}
+            </button>
+          ))}
+        </div>
       </div>
       { dataFiltered.map((pokemon) => (
         <PokemonCard key={ pokemon.name } data={ pokemon } id={ pokemon.number } />

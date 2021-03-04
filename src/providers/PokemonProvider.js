@@ -6,14 +6,9 @@ export const pokemonContext = createContext();
 
 export default function PokemonProvider({ children }) {
   const [data, setData] = useState([]);
+  const [dataFiltered, setDataFiltered] = useState([]);
   const [allTypes, setAllTypes] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const getData = async () => setData(await fetch1stGenPokemons());
-    getData();
-    setIsLoading(false);
-  }, []);
 
   const resetTypes = useCallback(() => {
     setAllTypes(
@@ -25,11 +20,20 @@ export default function PokemonProvider({ children }) {
   });
 
   useEffect(() => {
+    const getData = async () => setData(await fetch1stGenPokemons());
+    getData();
+  }, []);
+
+  useEffect(() => {
     resetTypes();
+    setDataFiltered(data);
+    setIsLoading(false);
   }, [data]);
 
   const objectValue = {
     data,
+    dataFiltered,
+    setDataFiltered,
     isLoading,
     allTypes,
     setAllTypes,
