@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext, useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { fetch1stGenPokemons } from '../services/pokemonApi';
 
@@ -6,6 +6,7 @@ export const pokemonContext = createContext();
 
 export default function PokemonProvider({ children }) {
   const [data, setData] = useState([]);
+  const [allTypes, setAllTypes] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -14,9 +15,25 @@ export default function PokemonProvider({ children }) {
     setIsLoading(false);
   }, []);
 
+  const resetTypes = useCallback(() => {
+    setAllTypes(
+      data
+        .map(({ types }) => types)
+        .flat()
+        .filter((type, index, array) => array.indexOf(type) === index),
+    );
+  });
+
+  useEffect(() => {
+    resetTypes();
+  }, [data]);
+
   const objectValue = {
     data,
     isLoading,
+    allTypes,
+    setAllTypes,
+    resetTypes,
   };
 
   return (
