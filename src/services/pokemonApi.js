@@ -16,8 +16,9 @@ export async function fetch1stGenPokemons() {
     const { results } = await endpoint.json();
     const allPreviewInfos = await Promise.all(
       results.map(async ({ name }, index) => {
+        const number = index + 1;
         const infos = await fetchPreviewInfos(index + 1);
-        return { name, ...infos };
+        return { name, ...infos, number };
       }),
     );
     return allPreviewInfos;

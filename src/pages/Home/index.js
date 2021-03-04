@@ -12,8 +12,8 @@ const Home = () => {
   }, [data]);
 
   useEffect(() => {
-    setDataFiltered((currValue) => currValue.filter(({ types }) => types
-      .includes(...filters)));
+    setDataFiltered(dataFiltered
+      .filter(({ types }) => filters.every((type) => types.includes(type))));
   }, [filters]);
 
   function filterByType({ target: { className } }) {
@@ -23,7 +23,7 @@ const Home = () => {
     });
     setAllTypes(allTypes.filter((type) => !(filters.includes(type))));
   }
-  console.log(dataFiltered);
+
   if (isLoading) return <Loading />;
   return (
     <div className="pokemons">
@@ -39,8 +39,8 @@ const Home = () => {
           </button>
         ))}
       </div>
-      { dataFiltered.map((pokemon, index) => (
-        <PokemonCard key={ pokemon.name } data={ pokemon } pokeNum={ index + 1 } />
+      { dataFiltered.map((pokemon) => (
+        <PokemonCard key={ pokemon.name } data={ pokemon } id={ pokemon.number } />
       )) }
     </div>
   );
