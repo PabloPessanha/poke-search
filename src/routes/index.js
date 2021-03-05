@@ -7,6 +7,7 @@ const Routes = () => (
     <Switch>
       <Route exact path="/" component={ Home } />
       <Route path="/:id" component={ Details } />
+      <Route path="*" component={ () => <h1>Page not found</h1> } />
     </Switch>
   </Router>
 );

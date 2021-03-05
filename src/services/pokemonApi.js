@@ -6,7 +6,7 @@ async function fetchPreviewInfos(id) {
     const infos = { types, image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png` };
     return infos;
   } catch (error) {
-    return error;
+    return { error: 'Not Found' };
   }
 }
 
@@ -21,9 +21,9 @@ export async function fetch1stGenPokemons() {
         return { name, ...infos, number };
       }),
     );
-    return allPreviewInfos;
+    return allPreviewInfos.filter(({ error }) => !error);
   } catch (error) {
-    return error;
+    return { error: 'Not Found' };
   }
 }
 

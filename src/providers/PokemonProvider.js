@@ -8,16 +8,28 @@ export default function PokemonProvider({ children }) {
   const [data, setData] = useState([]);
   const [dataFiltered, setDataFiltered] = useState([]);
   const [allTypes, setAllTypes] = useState([]);
+  const [typesFiltered, setTypesFiltered] = useState([]);
+  const [filters, setFilters] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const resetTypes = useCallback(() => {
-    setAllTypes(
-      data
-        .map(({ types }) => types)
-        .flat()
-        .filter((type, index, array) => array.indexOf(type) === index),
-    );
+  const getTypes = useCallback(() => {
+    const newTypes = data.map(({ types }) => types)
+      .flat()
+      .filter((type, index, arr) => arr.indexOf(type) === index);
+    setAllTypes(newTypes);
+    setTypesFiltered(newTypes);
   });
+
+  function filterByType({ target: { className } }) {
+    setFilters((currValue) => {
+      if (currValue.includes(className)) return currValue;
+      return [...currValue, className];
+    });
+  }
+
+  function removeFilter({ target: { className } }) {
+    return setFilters((currValue) => currValue.filter((type) => type !== className));
+  }
 
   useEffect(() => {
     const getData = async () => setData(await fetch1stGenPokemons());
@@ -25,19 +37,24 @@ export default function PokemonProvider({ children }) {
   }, []);
 
   useEffect(() => {
-    resetTypes();
+    getTypes();
     setDataFiltered(data);
     setIsLoading(false);
   }, [data]);
 
+  useEffect(() => {
+    setDataFiltered(data
+      .filter(({ types }) => filters.every((type) => types.includes(type))));
+    setTypesFiltered(allTypes.filter((type) => !(filters.includes(type))));
+  }, [filters]);
+
   const objectValue = {
-    data,
     dataFiltered,
-    setDataFiltered,
+    typesFiltered,
+    filters,
     isLoading,
-    allTypes,
-    setAllTypes,
-    resetTypes,
+    filterByType,
+    removeFilter,
   };
 
   return (
