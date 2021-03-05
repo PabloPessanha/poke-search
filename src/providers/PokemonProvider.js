@@ -20,16 +20,16 @@ export default function PokemonProvider({ children }) {
     setTypesFiltered(newTypes);
   });
 
-  function filterByType({ target: { className } }) {
+  const filterByType = useCallback(({ target: { className } }) => {
     setFilters((currValue) => {
       if (currValue.includes(className)) return currValue;
       return [...currValue, className];
     });
-  }
+  });
 
-  function removeFilter({ target: { className } }) {
-    return setFilters((currValue) => currValue.filter((type) => type !== className));
-  }
+  const removeFilter = useCallback(({ target: { className } }) => {
+    setFilters((currValue) => currValue.filter((type) => type !== className));
+  });
 
   useEffect(() => {
     const getData = async () => setData(await fetch1stGenPokemons());
@@ -38,13 +38,17 @@ export default function PokemonProvider({ children }) {
 
   useEffect(() => {
     getTypes();
-    setDataFiltered(data);
-    setIsLoading(false);
+    if (data.length > 1) {
+      setDataFiltered(data);
+      setIsLoading(false);
+    }
   }, [data]);
 
   useEffect(() => {
-    setDataFiltered(data
-      .filter(({ types }) => filters.every((type) => types.includes(type))));
+    setDataFiltered(data.filter(({ types }) => {
+      return filters.every((type) => types.includes(type));
+    }));
+
     setTypesFiltered(allTypes.filter((type) => !(filters.includes(type))));
   }, [filters]);
 

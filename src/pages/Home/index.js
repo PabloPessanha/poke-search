@@ -7,12 +7,10 @@ const Home = () => {
 
   if (isLoading) return <Loading />;
   return (
-    <div className="pokemons">
+    <>
       <PokemonFilters />
-      { dataFiltered.map((pokemon) => (
-        <PokemonCard key={ pokemon.name } data={ pokemon } id={ pokemon.number } />
-      )) }
-    </div>
+      <PokemonCard pokemons={ dataFiltered } />
+    </>
   );
 };
 
