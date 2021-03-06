@@ -1,0 +1,100 @@
+@font-face {
+  font-family: Poke-font;
+  src: url('../../assets/fonts/pkmn_rbygsc-webfont.woff') format('woff');
+}
+
+div.types-buttons {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+div.types-buttons button, div.remove-buttons button {
+  border: none;
+  border-radius: 3px;
+  box-shadow: 2px 2px #525252;
+  cursor: pointer;
+  color: white;
+  text-shadow: 1px 1px #525252;
+  font-family: 'Poke-font';
+  font-size: 12px;
+  padding: 6px;
+  margin: 10px 5px;
+  filter: blur(0.5px);
+  transition: 0.2s ease-in-out;
+}
+
+div.remove-buttons {
+  opacity: 0.6;
+}
+
+div.types-buttons button:hover, div.remove-buttons button:hover {
+  padding: 8px;
+}
+
+button.bug {
+  background-color: #ADBD21;
+}
+
+button.dragon {
+  background-color: #7B63E7;
+}
+
+button.electric {
+  background-color: #FFC631;
+}
+
+button.fairy {
+  background-color: #F7B5F7;
+}
+
+button.fighting {
+  background-color: #A55239;
+}
+
+button.fire {
+  background-color: #F75231;
+}
+
+button.flying {
+  background-color: #9CADF7;
+}
+
+button.ghost {
+  background-color: #6363B5;
+}
+
+button.grass {
+  background-color: #7BCE52;
+}
+
+button.ground {
+  background-color: #D6B55A;
+}
+
+button.ice {
+  background-color: #5ACEE7;
+}
+
+button.normal {
+  background-color: #ADA594;
+}
+
+button.poison {
+  background-color: #B55AA5;
+}
+
+button.psychic {
+  background-color: #FF73A5;
+}
+
+button.rock {
+  background-color: #BDA55A;
+}
+
+button.steel {
+  background-color: #ADADC6;
+}
+
+button.water {
+  background-color: #399CFF;
+}

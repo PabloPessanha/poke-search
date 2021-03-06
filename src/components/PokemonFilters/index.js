@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { pokemonContext as pokeContext } from '../../providers/PokemonProvider';
+import './styles.css';
 
 const PokemonFilters = () => {
   const { typesFiltered, filters, filterByType, removeFilter } = useContext(pokeContext);

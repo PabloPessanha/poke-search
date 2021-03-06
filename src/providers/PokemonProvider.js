@@ -16,8 +16,8 @@ export default function PokemonProvider({ children }) {
     const newTypes = data.map(({ types }) => types)
       .flat()
       .filter((type, index, arr) => arr.indexOf(type) === index);
-    setAllTypes(newTypes);
-    setTypesFiltered(newTypes);
+    setAllTypes(newTypes.sort());
+    setTypesFiltered(newTypes.sort());
   });
 
   const filterByType = useCallback(({ target: { className } }) => {
