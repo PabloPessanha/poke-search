@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import { PokemonCard, PokemonFilters, Loading } from '../../components';
 import { pokemonContext } from '../../providers/PokemonProvider';
+import './styles.css';
 
 const Home = () => {
   const { isLoading, dataFiltered } = useContext(pokemonContext);
@@ -26,6 +27,12 @@ const Home = () => {
         nextLabel="Next"
         pageCount={ pageCount }
         onPageChange={ changePage }
+        containerClassName="pages-container"
+        pageClassName="pages-option"
+        activeClassName="active-page-btn"
+        previousClassName="previous-page-btn"
+        nextClassName="next-page-btn"
+        disabledClassName="disabled-page-btn"
       />}
     </>
   );

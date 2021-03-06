@@ -1,0 +1,31 @@
+.pages-container {
+  display: flex;
+  list-style-type: none;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+}
+
+.pages-option, .previous-page-btn, .next-page-btn {
+  background-color: #fff;
+  border: 1px solid #525252;
+  cursor: pointer;
+  font-family: 'Poke-font';
+  font-size: 10px;
+  padding: 5px 8px;
+}
+
+
+.previous-page-btn, .next-page-btn {
+  color: white;
+  background-color: #A55239;
+  text-shadow: 1px 1px black;
+}
+
+.disabled-page-btn {
+  opacity: 0.6;
+}
+
+.active-page-btn {
+  background-color: #ccc;
+}
