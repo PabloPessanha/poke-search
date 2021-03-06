@@ -1,38 +1,86 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+@font-face {
+  font-family: Poke-font;
+  src: url('./assets/fonts/pkmn_rbygsc-webfont.woff') format('woff');
+}
+
 .App {
   text-align: center;
+  font-family: 'Roboto', sans-serif;
+  background-color: #ffffff;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.bug {
+  background-color: #ADBD21;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.dragon {
+  background-color: #7B63E7;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.electric {
+  background-color: #FFC631;
 }
 
-.App-link {
-  color: #61dafb;
+.fairy {
+  background-color: #F7B5F7;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.fighting {
+  background-color: #A55239;
+}
+
+.fire {
+  background-color: #F75231;
+}
+
+.flying {
+  background-color: #9CADF7;
+}
+
+.ghost {
+  background-color: #6363B5;
+}
+
+.grass {
+  background-color: #7BCE52;
+}
+
+.ground {
+  background-color: #D6B55A;
+}
+
+.ice {
+  background-color: #5ACEE7;
+}
+
+.normal {
+  background-color: #ADA594;
+}
+
+.poison {
+  background-color: #B55AA5;
+}
+
+.psychic {
+  background-color: #FF73A5;
+}
+
+.rock {
+  background-color: #BDA55A;
+}
+
+.steel {
+  background-color: #ADADC6;
+}
+
+.water {
+  background-color: #399CFF;
 }

@@ -1,0 +1,47 @@
+div.pokemons {
+  display: flex;
+  flex-direction: column;
+}
+
+div.pokemon-card a {
+  background-color: blanchedalmond;
+  color: gray;
+  display: flex;
+  flex-direction: row;
+  border-radius: 10px;
+  margin: 10px auto;
+  justify-content: flex-start;
+  align-items: center;
+  text-decoration: none;
+  max-width: 420px;
+}
+
+div.pokemon-infos {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+div.types-container {
+  display: flex;
+  flex-direction: row;
+}
+
+span.types {
+  border-radius: 3px;
+  box-shadow: 2px 2px #525252;
+  cursor: pointer;
+  color: white;
+  text-shadow: 1px 1px #525252;
+  font-family: 'Poke-font';
+  font-size: 6px;
+  font-weight: bold;
+  padding: 5px;
+  margin: 5px auto;
+  filter: blur(0.5px);
+  transition: 0.2s ease-in-out;
+}
+
+span.types + span.types {
+  margin-left: 5px;
+}

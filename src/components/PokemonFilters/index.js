@@ -17,7 +17,6 @@ const PokemonFilters = () => {
           {type}
         </button>
       ))}
-      <br />
       <div className="remove-buttons">
         {filters.map((type) => (
           <button

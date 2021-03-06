@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import './styles.css';
 
 const PokemonCard = ({ pokemons }) => {
   if (pokemons.length < 1) return <h1>No pokemons found with this fitlers.</h1>;
@@ -14,13 +15,14 @@ const PokemonCard = ({ pokemons }) => {
             </div>
             <div className="pokemon-infos">
               <h1>{name}</h1>
-              { types.map((type) => (
-                <span key={ `${name}-${type}` }>
-                  {type}
-                  {' '}
-                </span>
-              ))}
               <h4>{`No.${id}`}</h4>
+              <div className="types-container">
+                { types.map((type) => (
+                  <span className={ `types ${type}` } key={ `${name}-${type}` }>
+                    {type}
+                  </span>
+                ))}
+              </div>
             </div>
           </Link>
         </div>
