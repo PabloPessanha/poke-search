@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const PokemonCard = ({ pokemons }) => {
+  console.log(pokemons);
   if (pokemons.length < 1) return <h1>No pokemons found with this fitlers.</h1>;
   return (
     <div className="pokemons">
